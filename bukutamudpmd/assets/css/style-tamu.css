@@ -1,0 +1,447 @@
+/* =========================================
+   TAMU - MODERN GLOSSY UI (DPMD KEPRI)
+========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+
+:root {
+  --brand: #2563eb;
+  --brand-2: #7dd3fc;
+  --accent: #facc15;
+
+  --bg: #f3f6fb;
+  --text: #0f172a;
+  --muted: #64748b;
+
+  --glass: rgba(255, 255, 255, .68);
+  --glass-border: rgba(255, 255, 255, .35);
+
+  --radius: 20px;
+  --shadow-sm: 0 10px 28px rgba(15, 23, 42, .08);
+  --shadow-md: 0 20px 55px rgba(15, 23, 42, .12);
+  --shadow-lg: 0 34px 90px rgba(15, 23, 42, .18);
+
+  --blur: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background:
+    radial-gradient(1100px 520px at 15% 0%, rgba(37, 99, 235, .13), transparent 60%),
+    radial-gradient(1000px 520px at 100% 0%, rgba(250, 204, 21, .14), transparent 62%),
+    var(--bg) !important;
+  color: var(--text);
+}
+
+/* ========
+   HEADER 
+=========== */
+
+.header-metalic {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  background: linear-gradient(135deg, rgba(248, 250, 252, .70), rgba(219, 229, 241, .55));
+  backdrop-filter: blur(var(--blur)) saturate(170%);
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(170%);
+
+  /* FIX: tambah ruang kiri-kanan */
+  padding: 14px 26px;
+  border-bottom: 1px solid rgba(15, 23, 42, .08);
+  box-shadow: 0 10px 28px rgba(15, 23, 42, .10);
+}
+
+/* FIX: jadikan container header rapi & center */
+.header-inner {
+  max-width: 1200px;
+  /* supaya tidak “nempel” di layar lebar */
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  /* jarak logo group ke text */
+}
+
+/* Logo group */
+.header-logos {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  /* jarak antar elemen logo */
+  padding-right: 6px;
+}
+
+/* Logo */
+.header-logo {
+  height: 48px;
+  /* FIX: sedikit kecil biar proporsional */
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, .15));
+  transition: transform .2s ease;
+}
+
+.header-logo:hover {
+  transform: translateY(-1px) scale(1.03);
+}
+
+/* samakan */
+.header-logo-kepri {
+  height: 48px;
+}
+
+/* divider hitam */
+.logo-divider {
+  width: 2px;
+  height: 38px;
+  background: rgba(0, 0, 0, .75);
+  border-radius: 2px;
+}
+
+/* Text */
+.header-text h3 {
+  font-weight: 800;
+  letter-spacing: .2px;
+  line-height: 1.1;
+}
+
+.header-text p {
+  color: rgba(71, 85, 105, .9) !important;
+  line-height: 1.2;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header-metalic {
+    padding: 12px 14px;
+  }
+
+  .header-inner {
+    gap: 12px;
+  }
+
+  .header-logo,
+  .header-logo-kepri {
+    height: 40px;
+  }
+
+  .logo-divider {
+    height: 32px;
+  }
+}
+
+/* ================================
+   CARD FORM - Glass + Premium
+================================ */
+.container.mt-5 {
+  margin-top: 36px !important;
+}
+
+.card.shadow-sm.border-0 {
+  border-radius: var(--radius);
+  background: var(--glass);
+  border: 1px solid var(--glass-border) !important;
+
+  box-shadow: var(--shadow-md) !important;
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+
+  overflow: hidden;
+  position: relative;
+}
+
+/* glossy shine */
+.card.shadow-sm.border-0::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(900px 320px at 20% 0%, rgba(255, 255, 255, .55), transparent 55%);
+  pointer-events: none;
+}
+
+.card-body.p-5 {
+  position: relative;
+  z-index: 1;
+  padding: 42px !important;
+}
+
+.card-title {
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+/* ================================
+   FORM INPUTS - Modern
+================================ */
+.form-label {
+  font-weight: 700;
+  color: rgba(30, 41, 59, .92);
+}
+
+.form-control {
+  border-radius: 14px;
+  border: 1.5px solid rgba(15, 23, 42, .12);
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, .88);
+  transition: box-shadow .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.form-control:focus {
+  border-color: rgba(37, 99, 235, .55);
+  box-shadow: 0 0 0 4px rgba(125, 211, 252, .35);
+  transform: translateY(-1px);
+}
+
+/* textarea feel */
+textarea.form-control {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* ================================
+   SIGNATURE AREA - clean & premium (FULL + SAFE)
+   - tetap support touch, ukuran canvas, responsif
+================================ */
+
+/* wrapper signature */
+.signature-wrap {
+  width: 100%;
+  overflow: hidden;
+
+  border: 1px solid rgba(15, 23, 42, .12) !important;
+  border-radius: 16px !important;
+  background: rgba(255, 255, 255, .92) !important;
+  box-shadow: 0 14px 32px rgba(15, 23, 42, .10);
+}
+
+/* canvas signature */
+#signature-pad {
+  width: 100% !important;
+  height: 200px !important;
+  display: block !important;
+
+  background: #fff !important;
+
+  /* FIX penting untuk HP: tidak scroll/zoom saat teken */
+  touch-action: none !important;
+  user-select: none;
+
+  /* wrapper yang pegang border/shadow */
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 576px) {
+  #signature-pad {
+    height: 180px !important;
+  }
+}
+
+/* ================================
+   BUTTONS - Glossy
+================================ */
+.btn-primary {
+  border: none !important;
+  border-radius: 16px !important;
+  padding: 12px 14px;
+  font-weight: 800;
+  letter-spacing: .3px;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2)) !important;
+  box-shadow: 0 18px 40px rgba(37, 99, 235, .25);
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 26px 60px rgba(37, 99, 235, .30);
+  filter: brightness(.98);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-warning {
+  border-radius: 14px !important;
+  border: none !important;
+  font-weight: 800;
+  background: linear-gradient(135deg, #f59e0b, #facc15) !important;
+  box-shadow: 0 14px 28px rgba(245, 158, 11, .20);
+}
+
+.btn-warning:hover {
+  transform: translateY(-1px);
+}
+
+/* alert */
+.alert {
+  border-radius: 14px;
+  border: none !important;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ================================
+   FOOTER - More premium
+================================ */
+.footer-dpmd {
+  margin-top: 54px !important;
+  background: linear-gradient(135deg, #0b1220 0%, #121f33 45%, #0f172a 100%);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* glow blobs */
+.footer-dpmd::before,
+.footer-dpmd::after {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: .35;
+  pointer-events: none;
+}
+
+.footer-dpmd::before {
+  background: rgba(37, 99, 235, .65);
+  top: -170px;
+  left: -170px;
+}
+
+.footer-dpmd::after {
+  background: rgba(250, 204, 21, .55);
+  bottom: -190px;
+  right: -190px;
+}
+
+.footer-dpmd .footer-wrap {
+  position: relative;
+  z-index: 1;
+  padding-top: 30px;
+  padding-bottom: 16px;
+}
+
+.text-white-75 {
+  color: rgba(255, 255, 255, .78) !important;
+}
+
+.social-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.btn-social {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 14px;
+  text-decoration: none;
+  color: #fff;
+  transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+  border: 1px solid rgba(255, 255, 255, .14);
+  white-space: nowrap;
+
+  background: rgba(255, 255, 255, .06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.btn-social.instagram {
+  background: linear-gradient(45deg, rgba(245, 133, 41, .95), rgba(221, 42, 123, .95), rgba(129, 52, 175, .95));
+}
+
+.btn-social.facebook {
+  background: linear-gradient(135deg, #1877f2, #0b5bd3);
+}
+
+.btn-social.email {
+  background: linear-gradient(135deg, #64748b, #334155);
+}
+
+.btn-social:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, .28);
+  filter: brightness(.98);
+  color: #fff;
+}
+
+/* Map container premium */
+.footer-dpmd .map-container {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .14);
+  background: rgba(255, 255, 255, .06);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .25);
+}
+
+.footer-dpmd .map-container iframe {
+  width: 100%;
+  height: 240px !important;
+  border: 0;
+  display: block;
+}
+
+.footer-line {
+  margin: 16px 0 10px !important;
+  border-color: rgba(255, 255, 255, .12);
+}
+
+.footer-bottom {
+  padding-bottom: 6px;
+  color: rgba(255, 255, 255, .70);
+  font-size: 13px;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .header-metalic {
+    padding: 14px 16px;
+  }
+
+  .header-logo {
+    max-height: 46px;
+  }
+
+  .card-body.p-5 {
+    padding: 18px !important;
+  }
+
+  .container.mt-5 {
+    margin-top: 22px !important;
+  }
+
+  .footer-dpmd .footer-wrap {
+    padding: 22px 12px 14px;
+  }
+
+  .footer-dpmd .map-container iframe {
+    height: 210px !important;
+  }
+}
+
+/* reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+.form-page {
+  max-width: 980px;
+}
